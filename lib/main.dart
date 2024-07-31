@@ -44,7 +44,12 @@ class HomePage extends StatelessWidget {
           ),
           Expanded(
             child: Center(
-              child: OutlinedButton(onPressed: () {}, child: Text("e")),
+              child: OutlinedButton(
+                  onPressed: () {},
+                  child: Container(
+                    child: Text("e"),
+                    padding: EdgeInsets.all(100),
+                  )),
             ),
           ),
         ],
