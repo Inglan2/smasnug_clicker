@@ -40,16 +40,6 @@ class HomePage extends StatelessWidget {
       ),
       body: Row(
         children: [
-          Container(
-            child: Column(
-              children: [
-                Text("stuff"),
-                Image(image: AssetImage('assets/smasnug.png')),
-              ],
-            ),
-            color: theme.colorScheme.surfaceBright,
-            padding: EdgeInsets.all(50),
-          ),
           Expanded(
             child: Center(
               child: OutlinedButton(
@@ -63,6 +53,14 @@ class HomePage extends StatelessWidget {
                     ),
                     padding: EdgeInsets.all(50),
                   )),
+            ),
+          ),
+          Expanded(
+            child: Column(
+              children: [
+                Text("stuff"),
+                Image(image: AssetImage('assets/smasnug.png')),
+              ],
             ),
           ),
         ],
