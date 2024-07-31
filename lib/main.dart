@@ -41,30 +41,52 @@ class HomePage extends StatelessWidget {
       body: Row(
         children: [
           Expanded(
-            child: Center(
-              child: OutlinedButton(
-                  onPressed: () {},
-                  child: Container(
-                    child: Text(
-                      "Make SMASNUG",
-                      style: new TextStyle(
-                        fontSize: 20.0,
-                      ),
-                    ),
-                    padding: EdgeInsets.all(50),
-                  )),
-            ),
+            child: Left(),
           ),
           Expanded(
-            child: Column(
-              children: [
-                Text("stuff"),
-                Image(image: AssetImage('assets/smasnug.png')),
-              ],
-            ),
+            child: Right(),
           ),
         ],
       ),
+    );
+  }
+}
+
+class Right extends StatelessWidget {
+  const Right({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        Text("stuff"),
+        Image(image: AssetImage('assets/smasnug.png')),
+      ],
+    );
+  }
+}
+
+class Left extends StatelessWidget {
+  const Left({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: OutlinedButton(
+          onPressed: () {},
+          child: Container(
+            child: Text(
+              "Make SMASNUG",
+              style: new TextStyle(
+                fontSize: 20.0,
+              ),
+            ),
+            padding: EdgeInsets.all(50),
+          )),
     );
   }
 }
