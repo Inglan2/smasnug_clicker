@@ -32,6 +32,7 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var appState = context.watch<MainAppState>();
+    final theme = Theme.of(context); // ← Add this.
 
     return Scaffold(
       appBar: AppBar(
@@ -39,8 +40,15 @@ class HomePage extends StatelessWidget {
       ),
       body: Row(
         children: [
-          Column(
-            children: [Text("stuff")],
+          Container(
+            child: Column(
+              children: [
+                Text("stuff"),
+                Image(image: AssetImage('assets/smasnug.png')),
+              ],
+            ),
+            color: theme.colorScheme.surfaceBright,
+            padding: EdgeInsets.all(50),
           ),
           Expanded(
             child: Center(
