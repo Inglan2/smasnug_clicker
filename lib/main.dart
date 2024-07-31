@@ -47,8 +47,13 @@ class HomePage extends StatelessWidget {
               child: OutlinedButton(
                   onPressed: () {},
                   child: Container(
-                    child: Text("e"),
-                    padding: EdgeInsets.all(100),
+                    child: Text(
+                      "Make SMASNUG",
+                      style: new TextStyle(
+                        fontSize: 20.0,
+                      ),
+                    ),
+                    padding: EdgeInsets.all(50),
                   )),
             ),
           ),
