@@ -62,7 +62,6 @@ class Right extends StatelessWidget {
     return Column(
       children: [
         Text("stuff"),
-        
       ],
     );
   }
@@ -76,18 +75,65 @@ class Left extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: OutlinedButton(
-          onPressed: () {},
-          child: Container(
-            child: Image(image: AssetImage('assets/smasnug.png')),
-            // Text(
-            //   "Make SMASNUG",
-            //   style: new TextStyle(
-            //     fontSize: 20.0,
-            //   ),
-            // ),
-            padding: EdgeInsets.all(50),
-          )),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          Card(
+            child: Container(
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  ValueLabel(
+                    value: "\$1000",
+                    label: "Money",
+                  ),
+                  ValueLabel(
+                    value: "69",
+                    label: "Sold",
+                  ),
+                  ValueLabel(
+                    value: "420",
+                    label: "In Stock",
+                  ),
+                ],
+              ),
+              padding: EdgeInsets.all(20),
+            ),
+            // padding
+            margin: EdgeInsets.all(20),
+          ),
+          OutlinedButton(
+              onPressed: () {},
+              child: Container(
+                child: Text("Manufacture SMASNUG"),
+                padding: EdgeInsets.all(50),
+              )),
+        ],
+      ),
+    );
+  }
+}
+
+class ValueLabel extends StatelessWidget {
+  final String value;
+  final String label;
+
+  const ValueLabel({super.key, required this.value, required this.label});
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        Text(
+          value,
+          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 30),
+        ),
+        Text(
+          label,
+          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
+        ),
+      ],
     );
   }
 }
