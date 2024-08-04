@@ -62,7 +62,21 @@ class Right extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Text("stuff"),
+        Expanded(child: Column()),
+        NavigationBar(destinations: [
+          NavigationDestination(
+            icon: Icon(Icons.keyboard_arrow_up),
+            label: "Upgrades",
+          ),
+          NavigationDestination(
+            icon: Icon(Icons.build),
+            label: "Automation",
+          ),
+          NavigationDestination(
+            icon: Icon(Icons.campaign),
+            label: "Advertising",
+          ),
+        ])
       ],
     );
   }
