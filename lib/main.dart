@@ -118,7 +118,7 @@ class Left extends StatelessWidget {
                               fontWeight: FontWeight.bold, fontSize: 30)),
                     ],
                   ),
-                  padding: EdgeInsets.all(50),
+                  padding: EdgeInsets.all(10),
                 )),
           ),
         ],
