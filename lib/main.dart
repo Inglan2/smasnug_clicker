@@ -60,23 +60,31 @@ class Right extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
     return Column(
       children: [
         Expanded(child: Column()),
-        NavigationBar(destinations: [
-          NavigationDestination(
-            icon: Icon(Icons.keyboard_arrow_up),
-            label: "Upgrades",
-          ),
-          NavigationDestination(
-            icon: Icon(Icons.build),
-            label: "Automation",
-          ),
-          NavigationDestination(
-            icon: Icon(Icons.campaign),
-            label: "Advertising",
-          ),
-        ])
+        NavigationBar(
+          destinations: [
+            NavigationDestination(
+              icon: Icon(Icons.keyboard_arrow_up),
+              label: "Upgrades",
+            ),
+            NavigationDestination(
+              icon: Icon(Icons.build),
+              label: "Automation",
+            ),
+            NavigationDestination(
+              icon: Icon(Icons.campaign),
+              label: "Advertising",
+            ),
+            NavigationDestination(
+              icon: Icon(Icons.settings),
+              label: "Settings",
+            ),
+          ],
+          backgroundColor: theme.colorScheme.surface,
+        )
       ],
     );
   }
