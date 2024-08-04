@@ -14,7 +14,7 @@ class MainApp extends StatelessWidget {
     return ChangeNotifierProvider(
       create: (context) => MainAppState(),
       child: MaterialApp(
-        title: 'SMASNUG Clicker',
+        title: 'SMASNUG Factory Simulator',
         theme: ThemeData(
           useMaterial3: true,
           colorScheme: ColorScheme.fromSeed(
@@ -37,7 +37,7 @@ class HomePage extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text("SMASNUG Clicker"),
+        title: Text("SMASNUG Factory Simulator"),
       ),
       body: Row(
         children: [
