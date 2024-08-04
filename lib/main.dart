@@ -79,30 +79,7 @@ class Left extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          Card(
-            child: Container(
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  ValueLabel(
-                    value: "\$1000",
-                    label: "Money",
-                  ),
-                  ValueLabel(
-                    value: "69",
-                    label: "Sold",
-                  ),
-                  ValueLabel(
-                    value: "420",
-                    label: "In Stock",
-                  ),
-                ],
-              ),
-              padding: EdgeInsets.all(20),
-            ),
-            // padding
-            margin: EdgeInsets.all(20),
-          ),
+          Stats(),
           OutlinedButton(
               onPressed: () {},
               child: Container(
@@ -111,6 +88,40 @@ class Left extends StatelessWidget {
               )),
         ],
       ),
+    );
+  }
+}
+
+class Stats extends StatelessWidget {
+  const Stats({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+      child: Container(
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            ValueLabel(
+              value: "\$1000",
+              label: "Money",
+            ),
+            ValueLabel(
+              value: "69",
+              label: "Sold",
+            ),
+            ValueLabel(
+              value: "420",
+              label: "In Stock",
+            ),
+          ],
+        ),
+        padding: EdgeInsets.all(20),
+      ),
+      // padding
+      margin: EdgeInsets.all(20),
     );
   }
 }
