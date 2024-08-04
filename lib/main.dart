@@ -62,7 +62,7 @@ class Right extends StatelessWidget {
     return Column(
       children: [
         Text("stuff"),
-        Image(image: AssetImage('assets/smasnug.png')),
+        
       ],
     );
   }
@@ -79,12 +79,13 @@ class Left extends StatelessWidget {
       child: OutlinedButton(
           onPressed: () {},
           child: Container(
-            child: Text(
-              "Make SMASNUG",
-              style: new TextStyle(
-                fontSize: 20.0,
-              ),
-            ),
+            child: Image(image: AssetImage('assets/smasnug.png')),
+            // Text(
+            //   "Make SMASNUG",
+            //   style: new TextStyle(
+            //     fontSize: 20.0,
+            //   ),
+            // ),
             padding: EdgeInsets.all(50),
           )),
     );
