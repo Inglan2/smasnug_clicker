@@ -81,12 +81,24 @@ class Left extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Stats(),
-          OutlinedButton(
-              onPressed: () {},
-              child: Container(
-                child: Text("Manufacture SMASNUG"),
-                padding: EdgeInsets.all(50),
-              )),
+          Container(
+            padding: EdgeInsets.all(20),
+            child: ElevatedButton(
+                onPressed: () {},
+                child: Container(
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Icon(Icons.build, size: 30),
+                      SizedBox(width: 20),
+                      Text("Manufacture SMASNUG",
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold, fontSize: 30)),
+                    ],
+                  ),
+                  padding: EdgeInsets.all(50),
+                )),
+          ),
         ],
       ),
     );
