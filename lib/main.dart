@@ -27,7 +27,13 @@ class MainApp extends StatelessWidget {
   }
 }
 
-class MainAppState extends ChangeNotifier {}
+class MainAppState extends ChangeNotifier {
+  int _rightCurrentPage = 0;
+  void setRightCurrentPage(int index) {
+    _rightCurrentPage = index;
+    notifyListeners();
+  }
+}
 
 class HomePage extends StatelessWidget {
   @override
@@ -118,10 +124,15 @@ class Right extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+    var state = context.watch<MainAppState>();
     return Column(
       children: [
         Expanded(child: Column()),
         NavigationBar(
+          selectedIndex: state._rightCurrentPage,
+          onDestinationSelected: (int index) {
+            state.setRightCurrentPage(index);
+          },
           destinations: [
             NavigationDestination(
               icon: Icon(Icons.keyboard_arrow_up),
