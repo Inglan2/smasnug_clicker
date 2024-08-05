@@ -37,7 +37,9 @@ class HomePage extends StatelessWidget {
     var isSmallScreen = MediaQuery.sizeOf(context).width < 1000;
     var containerWidth =
         isSmallScreen ? screenSize.width : screenSize.width / 2;
-    final theme = Theme.of(context); // ← Add this.
+    final theme = Theme.of(context);
+    final leftContainerKey = new GlobalKey();
+    final rightContainerKey = new GlobalKey();
 
     return Scaffold(
         appBar: AppBar(
@@ -49,11 +51,48 @@ class HomePage extends StatelessWidget {
           children: [
             Container(
               width: containerWidth,
-              child: Expanded(child: Left()),
+              child: Column(
+                children: [
+                  Expanded(child: Left()),
+                  if (isSmallScreen)
+                    Container(
+                      alignment: Alignment.centerRight,
+                      padding: EdgeInsets.all(20),
+                      child: ElevatedButton(
+                          onPressed: () {
+                            Scrollable.ensureVisible(
+                              rightContainerKey.currentContext!,
+                              duration: Duration(milliseconds: 200),
+                              curve: Curves.easeOutExpo,
+                            );
+                          },
+                          child: Text("More")),
+                    ),
+                ],
+              ),
+              key: leftContainerKey,
             ),
             Container(
               width: containerWidth,
-              child: Expanded(child: Right()),
+              child: Column(
+                children: [
+                  Expanded(child: Right()),
+                  if (isSmallScreen)
+                    Container(
+                      alignment: Alignment.centerRight,
+                      padding: EdgeInsets.all(20),
+                      child: ElevatedButton(
+                          onPressed: () {
+                            Scrollable.ensureVisible(
+                                leftContainerKey.currentContext!,
+                                duration: Duration(milliseconds: 200),
+                                curve: Curves.easeOutExpo);
+                          },
+                          child: Text("Manufacture")),
+                    ),
+                ],
+              ),
+              key: rightContainerKey,
             ),
           ],
         )
