@@ -1,11 +1,11 @@
 {
-    "name": "smasnug_clicker",
-    "short_name": "smasnug_clicker",
+    "name": "SMASNUG Factory Simulator",
+    "short_name": "Factory Simulator",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",
     "theme_color": "#0175C2",
-    "description": "A new Flutter project.",
+    "description": "Build SMASNUGS",
     "orientation": "portrait-primary",
     "prefer_related_applications": false,
     "icons": [
