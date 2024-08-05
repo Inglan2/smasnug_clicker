@@ -1,8 +1,15 @@
 import 'package:flutter/material.dart';
 
 class Stats extends StatelessWidget {
+  final int money;
+  final int sold;
+  final int inStock;
+
   const Stats({
     super.key,
+    required this.money,
+    required this.sold,
+    required this.inStock,
   });
 
   @override
@@ -13,15 +20,15 @@ class Stats extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             ValueLabel(
-              value: "\$1000",
+              value: "\$" + money.toString(),
               label: "Money",
             ),
             ValueLabel(
-              value: "69",
+              value: sold.toString(),
               label: "Sold",
             ),
             ValueLabel(
-              value: "420",
+              value: inStock.toString(),
               label: "In Stock",
             ),
           ],

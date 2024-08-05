@@ -29,8 +29,11 @@ class MainApp extends StatelessWidget {
 
 class MainAppState extends ChangeNotifier {
   int _rightCurrentPage = 0;
-  void setRightCurrentPage(int index) {
-    _rightCurrentPage = index;
+  int money = 1000;
+  int sold = 0;
+  int inStock = 0;
+
+  void notify() {
     notifyListeners();
   }
 }
@@ -133,7 +136,8 @@ class Right extends StatelessWidget {
         bottomNavigationBar: NavigationBar(
           selectedIndex: state._rightCurrentPage,
           onDestinationSelected: (int index) {
-            state.setRightCurrentPage(index);
+            state._rightCurrentPage = index;
+            state.notify();
           },
           destinations: [
             NavigationDestination(
@@ -165,12 +169,17 @@ class Left extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var state = context.watch<MainAppState>();
     return Center(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          Stats(),
+          Stats(
+            money: state.money,
+            sold: state.sold,
+            inStock: state.inStock,
+          ),
           Container(
             padding: EdgeInsets.all(20),
             child: ElevatedButton(
