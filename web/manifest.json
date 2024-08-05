@@ -2,7 +2,7 @@
     "name": "SMASNUG Factory Simulator",
     "short_name": "Factory Simulator",
     "start_url": ".",
-    "display": "fullscreen",
+    "display": "standalone",
     "background_color": "#111418",
     "theme_color": "#111418",
     "description": "Build SMASNUGS",
