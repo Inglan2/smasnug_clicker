@@ -33,23 +33,41 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var appState = context.watch<MainAppState>();
+    var screenSize = MediaQuery.sizeOf(context);
+    var isSmallScreen = MediaQuery.sizeOf(context).width < 1000;
+    var containerWidth =
+        isSmallScreen ? screenSize.width : screenSize.width / 2;
     final theme = Theme.of(context); // ← Add this.
 
     return Scaffold(
-      appBar: AppBar(
-        title: Text("SMASNUG Factory Simulator"),
-      ),
-      body: Row(
-        children: [
-          Expanded(
-            child: Left(),
-          ),
-          Expanded(
-            child: Right(),
-          ),
-        ],
-      ),
-    );
+        appBar: AppBar(
+          title: Text("SMASNUG Factory Simulator"),
+        ),
+        body: ListView(
+          scrollDirection: Axis.horizontal,
+          physics: PageScrollPhysics(), // Enable snapping effect
+          children: [
+            Container(
+              width: containerWidth,
+              child: Expanded(child: Left()),
+            ),
+            Container(
+              width: containerWidth,
+              child: Expanded(child: Right()),
+            ),
+          ],
+        )
+        // Row(
+        //   children: [
+        //     Expanded(
+        //       child: Left(),
+        //     ),
+        //     Expanded(
+        //       child: Right(),
+        //     ),
+        //   ],
+        // ),
+        );
   }
 }
 
