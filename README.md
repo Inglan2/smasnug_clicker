@@ -1,3 +1,3 @@
 # smasnug_clicker
 
-A new Flutter project.
+A gmae I'm making to learn flutter
