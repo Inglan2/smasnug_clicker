@@ -125,10 +125,12 @@ class Right extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     var state = context.watch<MainAppState>();
-    return Column(
-      children: [
-        Expanded(child: Column()),
-        NavigationBar(
+    return Scaffold(
+        body: Expanded(
+          child: Center(
+              child: ElevatedButton(child: const Text("E"), onPressed: () {})),
+        ),
+        bottomNavigationBar: NavigationBar(
           selectedIndex: state._rightCurrentPage,
           onDestinationSelected: (int index) {
             state.setRightCurrentPage(index);
@@ -152,9 +154,7 @@ class Right extends StatelessWidget {
             ),
           ],
           backgroundColor: theme.colorScheme.surface,
-        )
-      ],
-    );
+        ));
   }
 }
 
