@@ -119,10 +119,17 @@ class HomePage extends StatelessWidget {
   }
 }
 
-class Right extends StatelessWidget {
+class Right extends StatefulWidget {
   const Right({
     super.key,
   });
+
+  @override
+  State<Right> createState() => _RightState();
+}
+
+class _RightState extends State<Right> {
+  var selectedIndex = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -134,10 +141,11 @@ class Right extends StatelessWidget {
               child: ElevatedButton(child: const Text("E"), onPressed: () {})),
         ),
         bottomNavigationBar: NavigationBar(
-          selectedIndex: state._rightCurrentPage,
+          selectedIndex: selectedIndex,
           onDestinationSelected: (int index) {
-            state._rightCurrentPage = index;
-            state.notify();
+            setState(() {
+              selectedIndex = index;
+            });
           },
           destinations: [
             NavigationDestination(
