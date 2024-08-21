@@ -28,7 +28,6 @@ class MainApp extends StatelessWidget {
 }
 
 class MainAppState extends ChangeNotifier {
-  int _rightCurrentPage = 0;
   int money = 1000;
   int sold = 0;
   int inStock = 0;
