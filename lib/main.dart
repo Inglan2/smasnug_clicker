@@ -245,7 +245,7 @@ class Left extends StatelessWidget {
             padding: EdgeInsets.all(20),
             child: ElevatedButton(
                 onPressed: () {
-                  state.inStock = 69;
+                  state.inStock++;
                   state.notify();
                 },
                 child: Container(
