@@ -183,14 +183,14 @@ class _RightState extends State<Right> {
             shadowColor: Colors.transparent,
             margin: const EdgeInsets.all(8.0),
             child: SizedBox.expand(
-          child: Center(
+              child: Center(
                 child: Text(
                   'Settings page',
                   style: theme.textTheme.titleLarge,
                 ),
               ),
             ),
-        ),
+          ),
         ][selectedIndex],
         bottomNavigationBar: NavigationBar(
           labelBehavior: NavigationDestinationLabelBehavior.onlyShowSelected,
@@ -244,7 +244,10 @@ class Left extends StatelessWidget {
           Container(
             padding: EdgeInsets.all(20),
             child: ElevatedButton(
-                onPressed: () {},
+                onPressed: () {
+                  state.inStock = 69;
+                  state.notify();
+                },
                 child: Container(
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
