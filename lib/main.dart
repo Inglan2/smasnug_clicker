@@ -136,11 +136,65 @@ class _RightState extends State<Right> {
     final theme = Theme.of(context);
     var state = context.watch<MainAppState>();
     return Scaffold(
-        body: Expanded(
+        appBar: AppBar(
+            title: <Widget>[
+          Text("Upgrades"),
+          Text("Automation"),
+          Text("Advertising"),
+          Text("Settings"),
+        ][selectedIndex]),
+        body: <Widget>[
+          Card(
+            shadowColor: Colors.transparent,
+            margin: const EdgeInsets.all(8.0),
+            child: SizedBox.expand(
+              child: Center(
+                child: Text(
+                  'Upgrades page',
+                  style: theme.textTheme.titleLarge,
+                ),
+              ),
+            ),
+          ),
+          Card(
+            shadowColor: Colors.transparent,
+            margin: const EdgeInsets.all(8.0),
+            child: SizedBox.expand(
+              child: Center(
+                child: Text(
+                  'Automation page',
+                  style: theme.textTheme.titleLarge,
+                ),
+              ),
+            ),
+          ),
+          Card(
+            shadowColor: Colors.transparent,
+            margin: const EdgeInsets.all(8.0),
+            child: SizedBox.expand(
+              child: Center(
+                child: Text(
+                  'Advertising page',
+                  style: theme.textTheme.titleLarge,
+                ),
+              ),
+            ),
+          ),
+          Card(
+            shadowColor: Colors.transparent,
+            margin: const EdgeInsets.all(8.0),
+            child: SizedBox.expand(
           child: Center(
-              child: ElevatedButton(child: const Text("E"), onPressed: () {})),
+                child: Text(
+                  'Settings page',
+                  style: theme.textTheme.titleLarge,
+                ),
+              ),
+            ),
         ),
+        ][selectedIndex],
         bottomNavigationBar: NavigationBar(
+          labelBehavior: NavigationDestinationLabelBehavior.onlyShowSelected,
           selectedIndex: selectedIndex,
           onDestinationSelected: (int index) {
             setState(() {
