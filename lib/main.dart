@@ -28,16 +28,24 @@ class MainApp extends StatelessWidget {
 }
 
 class MainAppState extends ChangeNotifier {
-  int money = 1000;
-  int sold = 0;
-  int inStock = 0;
+  // int money = 1000;
+  // int sold = 0;
+  // int inStock = 0;
 
   void notify() {
     notifyListeners();
   }
 }
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  int money = 1000;
+  int sold = 0;
+  int inStock = 0;
   @override
   Widget build(BuildContext context) {
     var appState = context.watch<MainAppState>();
@@ -61,7 +69,16 @@ class HomePage extends StatelessWidget {
               width: containerWidth,
               child: Column(
                 children: [
-                  Expanded(child: Left()),
+                  Expanded(
+                      child: Left(
+                          money: money,
+                          sold: sold,
+                          inStock: inStock,
+                          buildSmasnug: () {
+                            setState(() {
+                              inStock += 1;
+                            });
+                          })),
                   if (isSmallScreen)
                     Container(
                       alignment: Alignment.centerRight,
@@ -223,11 +240,24 @@ class _RightState extends State<Right> {
   }
 }
 
-class Left extends StatelessWidget {
+class Left extends StatefulWidget {
+  final int money;
+  final int sold;
+  final int inStock;
+  final VoidCallback? buildSmasnug;
   const Left({
     super.key,
+    required this.money,
+    required this.sold,
+    required this.inStock,
+    required this.buildSmasnug,
   });
 
+  @override
+  State<Left> createState() => _LeftState();
+}
+
+class _LeftState extends State<Left> {
   @override
   Widget build(BuildContext context) {
     var state = context.watch<MainAppState>();
@@ -237,16 +267,15 @@ class Left extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Stats(
-            money: state.money,
-            sold: state.sold,
-            inStock: state.inStock,
+            money: this.widget.money,
+            sold: this.widget.sold,
+            inStock: this.widget.inStock,
           ),
           Container(
             padding: EdgeInsets.all(20),
             child: ElevatedButton(
                 onPressed: () {
-                  state.inStock++;
-                  state.notify();
+                  widget.buildSmasnug?.call();
                 },
                 child: Container(
                   child: Row(
