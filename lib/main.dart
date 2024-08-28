@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 import 'widgets.dart';
 
 void main() {
@@ -11,29 +10,16 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider(
-      create: (context) => MainAppState(),
-      child: MaterialApp(
-        title: 'SMASNUG Factory Simulator',
-        theme: ThemeData(
-          useMaterial3: true,
-          colorScheme: ColorScheme.fromSeed(
-              seedColor: Colors.blue, brightness: Brightness.dark),
-          brightness: Brightness.dark,
-        ),
-        home: HomePage(),
+    return MaterialApp(
+      title: 'SMASNUG Factory Simulator',
+      theme: ThemeData(
+        useMaterial3: true,
+        colorScheme: ColorScheme.fromSeed(
+            seedColor: Colors.blue, brightness: Brightness.dark),
+        brightness: Brightness.dark,
       ),
+      home: HomePage(),
     );
-  }
-}
-
-class MainAppState extends ChangeNotifier {
-  // int money = 1000;
-  // int sold = 0;
-  // int inStock = 0;
-
-  void notify() {
-    notifyListeners();
   }
 }
 
@@ -48,7 +34,6 @@ class _HomePageState extends State<HomePage> {
   int inStock = 0;
   @override
   Widget build(BuildContext context) {
-    var appState = context.watch<MainAppState>();
     var screenSize = MediaQuery.sizeOf(context);
     var isSmallScreen = MediaQuery.sizeOf(context).width < 1000;
     var containerWidth =
@@ -150,7 +135,6 @@ class _RightState extends State<Right> {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    var state = context.watch<MainAppState>();
     return Scaffold(
         appBar: AppBar(
             title: <Widget>[
@@ -260,7 +244,6 @@ class Left extends StatefulWidget {
 class _LeftState extends State<Left> {
   @override
   Widget build(BuildContext context) {
-    var state = context.watch<MainAppState>();
     return Center(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
