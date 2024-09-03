@@ -23,7 +23,15 @@ class MainApp extends StatelessWidget {
   }
 }
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  final GlobalKey leftContainerKey = GlobalKey();
+  final GlobalKey rightContainerKey = GlobalKey();
+
   @override
   Widget build(BuildContext context) {
     var screenSize = MediaQuery.sizeOf(context);
@@ -31,64 +39,65 @@ class HomePage extends StatelessWidget {
     var containerWidth =
         isSmallScreen ? screenSize.width : screenSize.width / 2;
 
-    final leftContainerKey = GlobalKey();
-    final rightContainerKey = GlobalKey();
-
     return Scaffold(
-        appBar: AppBar(
-          title: Text("SMASNUG Factory Simulator"),
-        ),
-        body: ListView(
-          scrollDirection: Axis.horizontal,
-          physics: PageScrollPhysics(), // Enable snapping effect
-          children: [
-            Container(
-              width: containerWidth,
-              child: Column(
-                children: [
-                  Expanded(child: Left()),
-                  if (isSmallScreen)
-                    Container(
-                      alignment: Alignment.centerRight,
-                      padding: EdgeInsets.all(20),
-                      child: ElevatedButton(
-                          onPressed: () {
-                            Scrollable.ensureVisible(
-                              rightContainerKey.currentContext!,
-                              duration: Duration(milliseconds: 200),
-                              curve: Curves.easeOutExpo,
-                            );
-                          },
-                          child: Text("More")),
+      appBar: AppBar(
+        title: Text("SMASNUG Factory Simulator"),
+      ),
+      body: ListView(
+        scrollDirection: Axis.horizontal,
+        physics: PageScrollPhysics(), // Enable snapping effect
+        children: [
+          Container(
+            width: containerWidth,
+            child: Column(
+              children: [
+                Expanded(child: Left()),
+                if (isSmallScreen)
+                  Container(
+                    alignment: Alignment.centerRight,
+                    padding: EdgeInsets.all(20),
+                    child: ElevatedButton(
+                      onPressed: () {
+                        Scrollable.ensureVisible(
+                          rightContainerKey.currentContext!,
+                          duration: Duration(milliseconds: 200),
+                          curve: Curves.easeOutExpo,
+                        );
+                      },
+                      child: Text("More"),
                     ),
-                ],
-              ),
-              key: leftContainerKey,
+                  ),
+              ],
             ),
-            Container(
-              width: containerWidth,
-              child: Column(
-                children: [
-                  Expanded(child: Right()),
-                  if (isSmallScreen)
-                    Container(
-                      alignment: Alignment.centerRight,
-                      padding: EdgeInsets.all(20),
-                      child: ElevatedButton(
-                          onPressed: () {
-                            Scrollable.ensureVisible(
-                                leftContainerKey.currentContext!,
-                                duration: Duration(milliseconds: 200),
-                                curve: Curves.easeOutExpo);
-                          },
-                          child: Text("Manufacture")),
+            key: leftContainerKey,
+          ),
+          Container(
+            width: containerWidth,
+            child: Column(
+              children: [
+                Expanded(child: Right()),
+                if (isSmallScreen)
+                  Container(
+                    alignment: Alignment.centerRight,
+                    padding: EdgeInsets.all(20),
+                    child: ElevatedButton(
+                      onPressed: () {
+                        Scrollable.ensureVisible(
+                          leftContainerKey.currentContext!,
+                          duration: Duration(milliseconds: 200),
+                          curve: Curves.easeOutExpo,
+                        );
+                      },
+                      child: Text("Manufacture"),
                     ),
-                ],
-              ),
-              key: rightContainerKey,
+                  ),
+              ],
             ),
-          ],
-        ));
+            key: rightContainerKey,
+          ),
+        ],
+      ),
+    );
   }
 }
 
