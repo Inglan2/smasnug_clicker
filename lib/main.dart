@@ -23,24 +23,16 @@ class MainApp extends StatelessWidget {
   }
 }
 
-class HomePage extends StatefulWidget {
-  @override
-  State<HomePage> createState() => _HomePageState();
-}
-
-class _HomePageState extends State<HomePage> {
-  int money = 1000;
-  int sold = 0;
-  int inStock = 0;
+class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var screenSize = MediaQuery.sizeOf(context);
-    var isSmallScreen = MediaQuery.sizeOf(context).width < 1000;
+    var isSmallScreen = screenSize.width < 1000;
     var containerWidth =
         isSmallScreen ? screenSize.width : screenSize.width / 2;
-    final theme = Theme.of(context);
-    final leftContainerKey = new GlobalKey();
-    final rightContainerKey = new GlobalKey();
+
+    final leftContainerKey = GlobalKey();
+    final rightContainerKey = GlobalKey();
 
     return Scaffold(
         appBar: AppBar(
@@ -54,16 +46,7 @@ class _HomePageState extends State<HomePage> {
               width: containerWidth,
               child: Column(
                 children: [
-                  Expanded(
-                      child: Left(
-                          money: money,
-                          sold: sold,
-                          inStock: inStock,
-                          buildSmasnug: () {
-                            setState(() {
-                              inStock += 1;
-                            });
-                          })),
+                  Expanded(child: Left()),
                   if (isSmallScreen)
                     Container(
                       alignment: Alignment.centerRight,
@@ -105,18 +88,7 @@ class _HomePageState extends State<HomePage> {
               key: rightContainerKey,
             ),
           ],
-        )
-        // Row(
-        //   children: [
-        //     Expanded(
-        //       child: Left(),
-        //     ),
-        //     Expanded(
-        //       child: Right(),
-        //     ),
-        //   ],
-        // ),
-        );
+        ));
   }
 }
 
@@ -225,23 +197,23 @@ class _RightState extends State<Right> {
 }
 
 class Left extends StatefulWidget {
-  final int money;
-  final int sold;
-  final int inStock;
-  final VoidCallback? buildSmasnug;
-  const Left({
-    super.key,
-    required this.money,
-    required this.sold,
-    required this.inStock,
-    required this.buildSmasnug,
-  });
+  const Left({super.key});
 
   @override
   State<Left> createState() => _LeftState();
 }
 
 class _LeftState extends State<Left> {
+  int money = 1000;
+  int sold = 0;
+  int inStock = 0;
+
+  void buildSmasnug() {
+    setState(() {
+      inStock += 1;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Center(
@@ -250,16 +222,14 @@ class _LeftState extends State<Left> {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Stats(
-            money: this.widget.money,
-            sold: this.widget.sold,
-            inStock: this.widget.inStock,
+            money: money,
+            sold: sold,
+            inStock: inStock,
           ),
           Container(
             padding: EdgeInsets.all(20),
             child: ElevatedButton(
-                onPressed: () {
-                  widget.buildSmasnug?.call();
-                },
+                onPressed: buildSmasnug,
                 child: Container(
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
